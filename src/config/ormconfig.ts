@@ -7,6 +7,7 @@ dotenv.config();
 export default new DataSource({
   type: 'postgres',
   logging: true,
+  host: process.env.DATABASE_HOST,
   database: process.env.POSTGRES_DB,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,

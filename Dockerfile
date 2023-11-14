@@ -9,9 +9,6 @@ WORKDIR /usr/src/app
 # copying packages first helps take advantage of docker layers
 COPY package*.json ./
 
-RUN npm i -g bcryptjs node-gyp
-
-
 
 RUN npm i
 # If you are building your code for production
