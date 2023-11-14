@@ -1,14 +1,12 @@
 import {
   Body,
-  Controller,
-  Get,
+  Controller, Delete,
   HttpCode,
-  NotFoundException,
   Post,
   Req,
   Res,
-  UseGuards,
-} from '@nestjs/common';
+  UseGuards
+} from "@nestjs/common";
 import { AuthService } from './auth.service';
 import { SignInDto, SignUpDto } from '../../dto/auth.dto';
 import { Response } from 'express';
@@ -42,7 +40,7 @@ export class AuthController {
     return res.send(user);
   }
   @UseGuards(JwtGuard)
-  @Get('sign-out')
+  @Delete('sign-out')
   @ApiResponse({ status: 200, description: 'Delete auth cookies' })
   signOut(@Res() res: Response) {
     res.setHeader('Set-Cookie', this.authService.getCookieForLogOut());
