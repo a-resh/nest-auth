@@ -13,11 +13,7 @@ import JwtGuard from '../auth/jwt.guard';
 import { RequestWithUser } from '../../variables';
 import { Response } from 'express';
 import { User } from '../../entities/user.entity';
-import {
-  ApiCookieAuth,
-  ApiResponse,
-  ApiTags,
-} from "@nestjs/swagger";
+import { ApiCookieAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UpdateUserDto } from '../../dto/user.dto';
 
 @ApiTags('User')
@@ -33,7 +29,8 @@ export class UserController {
     description: 'not found',
   })
   updateUser(
-    @Req() { user, body }: RequestWithUser<UpdateUserDto>,
+    @Req() { user }: RequestWithUser<UpdateUserDto>,
+    @Body() body: UpdateUserDto,
   ): Promise<NotFoundException | User> {
     return this.userService.updateUser(user.id, body);
   }

@@ -29,10 +29,11 @@ export class AuthController {
   @ApiResponse({
     status: 200,
     type: User,
-    description: 'User with auth cookie',
+    description: 'Sign In (Get User with auth cookie)',
   })
   signIn(
     @Req() { user }: RequestWithUser<SignInDto>,
+    @Body() body: SignInDto,
     @Res() res: Response,
   ): Response<User> {
     const cookie = this.authService.getCookieWithJwtToken(user);
